@@ -1,7 +1,7 @@
 import { IsUUID } from 'class-validator';
-import { User } from 'src/users/users.entity';
 
 export class CompleteTaskDto {
+  @IsUUID()
   taskId: string;
 
   userId: string;
