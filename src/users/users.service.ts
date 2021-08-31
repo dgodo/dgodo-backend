@@ -19,6 +19,10 @@ export class UsersService {
     });
   }
 
+  async getById(id:string){
+    return this.userRepo.findOne(id)
+  }
+
   async createUser(createUserDto: CreateUserDto) {
     return this.userRepo.save(createUserDto);
   }

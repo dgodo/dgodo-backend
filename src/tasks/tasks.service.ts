@@ -20,12 +20,10 @@ export class TasksService {
   }
 
   async getInCompleteTasks(userId: string) {
-    const tasks = await this.taskRepo
+ return this.taskRepo
       .createQueryBuilder('task')
       .where('task.completedUsers NOT IN (:userId)', { userId: [userId] })
       .execute();
-    console.log(tasks);
-    return tasks;
   }
 
   async getTaskById(taskId: string) {
