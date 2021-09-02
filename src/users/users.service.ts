@@ -19,8 +19,8 @@ export class UsersService {
     });
   }
 
-  async getById(id:string){
-    return this.userRepo.findOne(id)
+  async getById(id: string) {
+    return this.userRepo.findOne(id);
   }
 
   async createUser(createUserDto: CreateUserDto) {
