@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Not, Repository } from 'typeorm';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { CompleteTaskDto } from './dto/complete-task.dto';
 import { Task } from './tasks.entity';
@@ -20,9 +20,9 @@ export class TasksService {
   }
 
   async getInCompleteTasks(userId: string) {
- return this.taskRepo
+    return this.taskRepo
       .createQueryBuilder('task')
-      .where('task.completedUsers NOT IN (:userId)', { userId: [userId] })
+      .where('  (:uid) != ALL (task.completedUsers ) ', { uid: userId })
       .execute();
   }
 
